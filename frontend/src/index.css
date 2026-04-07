@@ -1,0 +1,25 @@
+:root {
+  --primary-color: #3f51b5; /* Premium Indigo */
+  --secondary-color: #ffc107; /* Gold/Amber */
+  --accent-color: #fb641b; /* Keep the orange for CTA but more subtle */
+  --background-gray: #f1f3f6;
+  --text-dark: #212121;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-gray);
+  color: var(--text-dark);
+}
+
+.navbar {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--accent-color) !important;
+  border-color: var(--accent-color) !important;
+}

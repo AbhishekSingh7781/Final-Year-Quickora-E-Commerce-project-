@@ -1,0 +1,1 @@
+export const Protected = ({children}) => <div>{children}</div>
