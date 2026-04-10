@@ -138,7 +138,7 @@ export const HomePage = () => {
           ) : (
             <Grid container spacing={3}>
               {products && products.length > 0 ? products.map((product) => (
-                <Grid item key={product.id} xs={12} sm={6} md={4} lg={3} xl={2.4}>
+                <Grid key={product.id} size={{ xs: 12, sm: 6, md: 4, lg: 3, xl: 2.4 }}>
                   <Link to={`/product-details/${product.id}`} style={{ textDecoration: 'none' }}>
                     <ProductCard product={product} />
                   </Link>

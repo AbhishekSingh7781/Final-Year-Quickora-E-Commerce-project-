@@ -1,7 +1,9 @@
+import { API_URL } from "../../constants";
+
 export function createOrder(order) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/orders', {
+      const response = await fetch(`${API_URL}/orders`, {
         method: 'POST',
         body: JSON.stringify(order),
         headers: { 'content-type': 'application/json' },
@@ -22,7 +24,7 @@ export function createOrder(order) {
 export function fetchLoggedInUserOrders() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/orders/user', {
+      const response = await fetch(`${API_URL}/orders/user`, {
         credentials: 'include'
       });
       const data = await response.json();
@@ -40,7 +42,7 @@ export function fetchLoggedInUserOrders() {
 export function updateOrder(order) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/orders/' + order.id, {
+      const response = await fetch(`${API_URL}/orders/${order.id}`, {
         method: 'PATCH',
         body: JSON.stringify(order),
         headers: { 'content-type': 'application/json' },
@@ -69,7 +71,7 @@ export function fetchAllOrders(sort, pagination) {
 
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/orders?' + queryString, {
+      const response = await fetch(`${API_URL}/orders?${queryString}`, {
         credentials: 'include'
       });
       const data = await response.json();

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { API_URL } from '../../constants';
 
 const slice = createSlice({ 
     name: 'categories', 
@@ -10,7 +11,7 @@ const slice = createSlice({
 
 export const fetchCategoriesAsync = () => async dispatch => {
     try {
-        const res = await fetch('http://localhost:5001/categories');
+        const res = await fetch(`${API_URL}/categories`);
         const data = await res.json();
         dispatch(slice.actions.setCategories(data));
     } catch(err) {}

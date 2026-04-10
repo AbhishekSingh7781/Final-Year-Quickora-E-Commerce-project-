@@ -1,7 +1,9 @@
+import { API_URL } from "../../constants";
+
 export function addToCart(item) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/cart', {
+      const response = await fetch(`${API_URL}/cart`, {
         method: 'POST',
         body: JSON.stringify(item),
         headers: { 'content-type': 'application/json' },
@@ -22,7 +24,7 @@ export function addToCart(item) {
 export function fetchItemsByUserId() {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/cart', {
+      const response = await fetch(`${API_URL}/cart`, {
         credentials: 'include'
       });
       const data = await response.json();
@@ -40,7 +42,7 @@ export function fetchItemsByUserId() {
 export function updateCart(update) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/cart/' + update.id, {
+      const response = await fetch(`${API_URL}/cart/${update.id}`, {
         method: 'PATCH',
         body: JSON.stringify(update),
         headers: { 'content-type': 'application/json' },
@@ -61,7 +63,7 @@ export function updateCart(update) {
 export function deleteItemFromCart(itemId) {
   return new Promise(async (resolve, reject) => {
     try {
-      const response = await fetch('http://localhost:5001/cart/' + itemId, {
+      const response = await fetch(`${API_URL}/cart/${itemId}`, {
         method: 'DELETE',
         headers: { 'content-type': 'application/json' },
         credentials: 'include'

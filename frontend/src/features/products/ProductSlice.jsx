@@ -66,7 +66,13 @@ export const productSlice = createSlice({
             state.productUpdateStatus = 'idle';
         },
         setCategoryFilter: (state, action) => {
-            state.filters = { ...state.filters, category: action.payload };
+            if (action.payload === 'All') {
+                const newFilters = { ...state.filters };
+                delete newFilters.category;
+                state.filters = newFilters;
+            } else {
+                state.filters = { ...state.filters, category: action.payload };
+            }
         },
     },
     extraReducers: (builder) => {

@@ -1,3 +1,5 @@
+import { API_URL } from "../../constants";
+
 export function fetchProducts(filter, sort, pagination, admin) {
   // filter = {"category":["smartphone","laptops"]}
   // sort = {_sort:"price",_order:"desc"}

@@ -78,7 +78,7 @@ export const ProductDetailsPage = () => {
         <Grid container spacing={6}>
           
           {/* Left Side: Images & Actions */}
-          <Grid item xs={12} md={5}>
+          <Grid size={{ xs: 12, md: 5 }}>
              <Box sx={{ position: 'sticky', top: '100px' }}>
                 <Paper 
                   elevation={0}
@@ -166,7 +166,7 @@ export const ProductDetailsPage = () => {
           </Grid>
 
           {/* Right Side: Product Info */}
-          <Grid item xs={12} md={7}>
+          <Grid size={{ xs: 12, md: 7 }}>
              <Typography variant="body2" sx={{ mb: 2, color: '#64748b', fontWeight: 500 }}>
                 {product.category?.name || product.category} / {product.brand?.name || product.brand} / {product.title}
              </Typography>
@@ -216,7 +216,7 @@ export const ProductDetailsPage = () => {
                 <Typography variant="h6" sx={{ fontWeight: 700, mb: 2 }}>Warranty & Services</Typography>
                 <Grid container spacing={2}>
                    {['1 Year Manufacturer Warranty', '7 Days Replacement Policy', 'Free Delivery'].map((service, index) => (
-                      <Grid item xs={12} sm={4} key={index}>
+                      <Grid size={{ xs: 12, sm: 4 }} key={index}>
                          <Typography variant="body2" sx={{ color: '#64748b', fontWeight: 600 }}>• {service}</Typography>
                       </Grid>
                    ))}

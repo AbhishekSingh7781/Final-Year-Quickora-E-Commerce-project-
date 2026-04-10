@@ -41,17 +41,47 @@ export const CategoryRibbon = () => {
           px: 2,
           gap: 4
       }}>
-        {categories.map((category) => (
+        {[{id: 'all', name: 'All'}, ...categories].map((category) => (
             <motion.div 
-                key={category._id} 
+                key={category.id || category._id} 
                 onClick={() => handleCategoryClick(category.name)}
-                whileHover={{ scale: 1.05, color: '#2874f0' }} 
-                style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column', alignItems: 'center', minWidth: '80px' }}
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.95 }}
+                style={{ 
+                    cursor: 'pointer', 
+                    display: 'flex', 
+                    flexDirection: 'column', 
+                    alignItems: 'center', 
+                    minWidth: '70px',
+                    transition: 'all 0.2s ease'
+                }}
             >
-                <Box sx={{ width: 64, height: 64, mb: 1, backgroundColor: '#f0f0f0', borderRadius: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '32px' }}>
+                <Box sx={{ 
+                    width: 60, 
+                    height: 60, 
+                    mb: 1.5, 
+                    backgroundColor: '#f8fafc', 
+                    borderRadius: '20px', 
+                    display: 'flex', 
+                    justifyContent: 'center', 
+                    alignItems: 'center', 
+                    fontSize: '32px',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                    border: '1px solid #f1f3f6',
+                    '&:hover': {
+                        backgroundColor: '#eff6ff',
+                        borderColor: '#bfdbfe'
+                    }
+                }}>
                     {getEmoji(category.name)}
                 </Box>
-                <Typography variant="body2" sx={{ fontWeight: 600, color: '#333', textAlign: 'center' }}>
+                <Typography variant="body2" sx={{ 
+                    fontWeight: 700, 
+                    color: '#1e293b', 
+                    textAlign: 'center',
+                    fontSize: '13px',
+                    letterSpacing: '0.01em'
+                }}>
                     {category.name}
                 </Typography>
             </motion.div>

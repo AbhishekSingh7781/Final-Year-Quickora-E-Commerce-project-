@@ -1,3 +1,5 @@
+import { API_URL } from "../../constants";
+
 export function createUser(userData) {
     return new Promise(async (resolve, reject) => {
         try {

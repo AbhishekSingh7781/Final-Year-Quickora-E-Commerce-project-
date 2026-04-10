@@ -83,7 +83,7 @@ export const AdminDashboardPage = () => {
                 {/* Stats Grid */}
                 <Grid container spacing={4} sx={{ mb: 6 }}>
                     {statCards.map((stat, index) => (
-                        <Grid item xs={12} sm={6} md={3} key={index}>
+                        <Grid size={{ xs: 12, sm: 6, md: 3 }} key={index}>
                             <motion.div whileHover={{ y: -5 }} transition={{ duration: 0.2 }}>
                                 <Paper elevation={0} sx={{ p: 4, borderRadius: '28px', border: '1px solid #f1f3f6' }}>
                                     <Stack direction="row" justifyContent="space-between" alignItems="flex-start">
@@ -107,7 +107,7 @@ export const AdminDashboardPage = () => {
 
                 {/* Quick Actions & Recent Info */}
                 <Grid container spacing={4}>
-                    <Grid item xs={12} md={7}>
+                    <Grid size={{ xs: 12, md: 7 }}>
                         <Paper elevation={0} sx={{ p: 4, borderRadius: '32px', border: '1px solid #f1f3f6', height: '100%' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
                                 <Typography variant="h6" sx={{ fontWeight: 800 }}>Primary Management</Typography>
@@ -139,7 +139,7 @@ export const AdminDashboardPage = () => {
                         </Paper>
                     </Grid>
 
-                    <Grid item xs={12} md={5}>
+                    <Grid size={{ xs: 12, md: 5 }}>
                         <Paper 
                           elevation={0} 
                           sx={{ 

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quickora | Server Deployment Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --bg: #0f172a;
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(79, 70, 229, 0.1) 0%, transparent 40%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 24px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.4);
+        }
+
+        .card-title {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .card-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+
+        .indicator-online { background-color: var(--success); box-shadow: 0 0 10px var(--success); }
+        .indicator-warning { background-color: var(--warning); box-shadow: 0 0 10px var(--warning); }
+
+        .details-section {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            width: 100%;
+        }
+
+        .details-section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .details-section h2::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 15px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .info-row:last-child { border-bottom: none; }
+
+        .info-label { color: var(--text-muted); }
+        .info-value { font-family: monospace; color: var(--primary); }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .footer {
+            margin-top: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Quickora</h1>
+            <p>System Architecture & Deployment Details</p>
+        </header>
+
+        <div class="status-grid">
+            <div class="card">
+                <div class="card-title">SERVER STATUS <span class="indicator indicator-online"></span></div>
+                <div class="card-value">Running</div>
+                <div class="card-desc">v1.0.0 Production Ready</div>
+            </div>
+            <div class="card">
+                <div class="card-title">ENVIRONMENT <span class="indicator indicator-online"></span></div>
+                <div class="card-value" id="env-mode">Loading...</div>
+                <div class="card-desc">Current execution context</div>
+            </div>
+            <div class="card">
+                <div class="card-title">DATABASE <span class="indicator" id="db-indicator"></span></div>
+                <div class="card-value" id="db-status">Checking...</div>
+                <div class="card-desc" id="db-desc">Connection health</div>
+            </div>
+            <div class="card">
+                <div class="card-title">TOTAL PRODUCTS <span class="indicator indicator-online"></span></div>
+                <div class="card-value" id="product-count">0</div>
+                <div class="card-desc">Items in inventory</div>
+            </div>
+        </div>
+
+        <div class="details-section">
+            <h2>Deployment Configuration</h2>
+            <div class="info-row">
+                <span class="info-label">Base URL</span>
+                <span class="info-value" id="base-url">Detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Node JS Version</span>
+                <span class="info-value" id="node-version">Detecting...</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Main Entry</span>
+                <span class="info-value">index.js</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Mock Middleware</span>
+                <span class="info-value" id="mock-status">Checking...</span>
+            </div>
+            
+            <div style="text-align: center; margin-top: 10px;">
+                <a href="/products" class="btn">Test API Endpoints</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 Quickora E-commerce | Final Year Project Deployment Page
+        </div>
+    </div>
+
+    <script>
+        async function updateStatus() {
+            try {
+                const response = await fetch('/api/deployment-status');
+                const data = await response.json();
+
+                document.getElementById('env-mode').textContent = data.env.toUpperCase();
+                document.getElementById('db-status').textContent = data.dbStatus;
+                document.getElementById('base-url').textContent = window.location.origin;
+                document.getElementById('node-version').textContent = data.nodeVersion;
+                document.getElementById('mock-status').textContent = data.mockActive ? 'ACTIVE' : 'INACTIVE';
+                document.getElementById('product-count').textContent = data.totalProducts;
+                
+                const dbIndicator = document.getElementById('db-indicator');
+                if (data.dbStatus === 'Connected') {
+                    dbIndicator.className = 'indicator indicator-online';
+                } else {
+                    dbIndicator.className = 'indicator indicator-warning';
+                }
+
+            } catch (error) {
+                console.error('Failed to fetch status:', error);
+            }
+        }
+
+        updateStatus();
+    </script>
+</body>
+</html>
