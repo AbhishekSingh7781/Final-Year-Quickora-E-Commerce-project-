@@ -51,5 +51,3 @@ Quickora is ready for a single-server deployment.
 2. The `backend` is configured to serve the `dist` folder automatically in production.
 3. Live preview at `http://localhost:5001`.
 
----
-*Created with ❤️ by Antigravity*
