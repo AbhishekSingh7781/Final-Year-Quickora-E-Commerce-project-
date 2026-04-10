@@ -16,3 +16,5 @@ export { UserOrdersPage } from './UserOrdersPage';
 export { AuthPage } from './AuthPage';
 export { UserProfilePage } from './UserProfilePage';
 export { WishlistPage } from './WishlistPage';
+export { OrderReceiptPage } from './OrderReceiptPage';
+export { TrackOrderPage } from './TrackOrderPage';

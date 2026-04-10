@@ -11,7 +11,7 @@ import { Logout } from './features/auth/components/Logout';
 import { Protected } from './features/auth/components/Protected';
 import { useAuthCheck } from "./hooks/useAuth/useAuthCheck";
 import { useFetchLoggedInUserDetails } from "./hooks/useAuth/useFetchLoggedInUserDetails";
-import { AddProductPage, AdminOrdersPage, AuthPage, CartPage, CheckoutPage, ForgotPasswordPage, HomePage, LoginPage, OrderSuccessPage, OtpVerificationPage, ProductDetailsPage, ProductUpdatePage, ResetPasswordPage, SignupPage, UserOrdersPage, UserProfilePage, WishlistPage } from './pages';
+import { AddProductPage, AdminOrdersPage, AuthPage, CartPage, CheckoutPage, ForgotPasswordPage, HomePage, LoginPage, OrderSuccessPage, OtpVerificationPage, ProductDetailsPage, ProductUpdatePage, ResetPasswordPage, SignupPage, UserOrdersPage, UserProfilePage, WishlistPage, OrderReceiptPage, TrackOrderPage } from './pages';
 import { AdminDashboardPage } from './pages/AdminDashboardPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
@@ -61,6 +61,8 @@ function App() {
             <Route path='/order-success/:id' element={<Protected><OrderSuccessPage/></Protected>}/>
             <Route path='/orders' element={<Protected><UserOrdersPage/></Protected>}/>
             <Route path='/wishlist' element={<Protected><WishlistPage/></Protected>}/>
+            <Route path='/order-receipt/:id' element={<Protected><OrderReceiptPage/></Protected>}/>
+            <Route path='/track-order/:id' element={<Protected><TrackOrderPage/></Protected>}/>
             </>
           )
         }

@@ -118,7 +118,22 @@ export const OrderSuccessPage = () => {
                             <Button 
                                 variant="outlined" 
                                 component={Link} 
-                                to="/my-orders" 
+                                to={`/order-receipt/${id}`} 
+                                startIcon={<Receipt />}
+                                sx={{ 
+                                    py: 2, 
+                                    px: 4, 
+                                    borderRadius: '16px', 
+                                    fontWeight: 700,
+                                    borderColor: '#e2e8f0'
+                                }}
+                            >
+                                View Receipt
+                            </Button>
+                            <Button 
+                                variant="outlined" 
+                                component={Link} 
+                                to={`/track-order/${id}`} 
                                 endIcon={<ArrowForward />}
                                 sx={{ 
                                     py: 2, 
@@ -128,7 +143,7 @@ export const OrderSuccessPage = () => {
                                     borderColor: '#e2e8f0'
                                 }}
                             >
-                                View My Orders
+                                Track Order
                             </Button>
                         </Stack>
                     </Paper>

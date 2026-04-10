@@ -89,7 +89,7 @@ server.get('/health', (req, res) => {
 
 // --- SPA Routing (MUST BE LAST) ---
 // This ensures that any route not caught by an API will serve the frontend's index.html
-server.get('*', (req, res) => {
+server.get(/.*/, (req, res) => {
     const indexFile = path.resolve(distPath, 'index.html');
     if (require('fs').existsSync(indexFile)) {
         res.sendFile(indexFile);

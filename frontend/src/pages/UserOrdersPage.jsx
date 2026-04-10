@@ -81,10 +81,32 @@ export const UserOrdersPage = () => {
                                                     <Typography variant="body1" sx={{ fontWeight: 800 }}>#{order.id.slice(-10).toUpperCase()}</Typography>
                                                 </Box>
                                                 <Box sx={{ textAlign: 'right' }}>
-                                                    <Chip 
-                                                        label={order.status.toUpperCase()} 
-                                                        sx={{ bgcolor: getStatusColor(order.status) + '20', color: getStatusColor(order.status), fontWeight: 800, borderRadius: '8px' }} 
-                                                    />
+                                                    <Stack direction="row" spacing={1} sx={{ mb: 1, justifyContent: 'flex-end' }}>
+                                                        <Chip 
+                                                            label={order.status.toUpperCase()} 
+                                                            sx={{ bgcolor: getStatusColor(order.status) + '20', color: getStatusColor(order.status), fontWeight: 800, borderRadius: '8px' }} 
+                                                        />
+                                                    </Stack>
+                                                    <Stack direction="row" spacing={1}>
+                                                        <Button 
+                                                            size="small" 
+                                                            variant="text" 
+                                                            component={Link} 
+                                                            to={`/track-order/${order.id}`}
+                                                            sx={{ fontWeight: 700, fontSize: '0.75rem', color: '#6366f1' }}
+                                                        >
+                                                            Track
+                                                        </Button>
+                                                        <Button 
+                                                            size="small" 
+                                                            variant="text" 
+                                                            component={Link} 
+                                                            to={`/order-receipt/${order.id}`}
+                                                            sx={{ fontWeight: 700, fontSize: '0.75rem', color: '#64748b' }}
+                                                        >
+                                                            Receipt
+                                                        </Button>
+                                                    </Stack>
                                                 </Box>
                                             </Box>
 
